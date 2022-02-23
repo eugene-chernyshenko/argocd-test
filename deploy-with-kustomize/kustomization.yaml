@@ -1,6 +1,18 @@
-namePrefix: kustomize-
-resources:
-- deploy.yaml
-- patch.yaml
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
+namePrefix: kustomize-
+
+resources:
+- deploy.yaml
+
+patchesJson6902:
+  - target:
+      version: v1
+      group: apps
+      kind: Deployment
+      name: nginx
+    patch: |-
+      - op: replace
+        path: /spec/replicas
+        value: 1
