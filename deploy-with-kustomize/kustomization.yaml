@@ -11,7 +11,7 @@ patchesJson6902:
       version: v1
       group: apps
       kind: Deployment
-      name: nginx
+      name: kustomize-nginx
     patch: |-
       - op: replace
         path: /spec/replicas
